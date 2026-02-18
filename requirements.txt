@@ -1,0 +1,21 @@
+# Minimal / no dependencies
+python-dotenv
+pymysql
+
+# Web server & framework
+uvicorn
+fastapi
+
+# ML & vector store (install before LangChain integrations that use them)
+sentence-transformers
+chromadb
+
+# LangChain core (install before any langchain_*)
+langchain
+
+# LangChain integrations (depend on langchain)
+langchain_community
+langchain_openai
+langchain_experimental
+langchain-chroma
+langchain_huggingface
