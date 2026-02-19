@@ -75,6 +75,8 @@ The backend uses few-shot examples (selected by semantic similarity from a Chrom
 
 Copy `.env.example` to `.env` and fill in your values.
 
+**Testing:** This project was tested using [OpenRouter](https://openrouter.ai/) with the model `arcee-ai/trinity-large-preview:free`. Use OpenRouter’s API URL for `OPENAI_API_BASE` and your OpenRouter API key for `OPENAI_API_KEY`, and set `LLM` to `arcee-ai/trinity-large-preview:free` (or another OpenRouter model).
+
 ---
 
 ## Sample Table for Experiment
