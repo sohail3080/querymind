@@ -19,3 +19,4 @@ langchain_openai
 langchain_experimental
 langchain-chroma
 langchain_huggingface
+cryptography

@@ -1,11 +1,13 @@
 # ============================ IMPORT STATEMENTS ============================
 import os
+import asyncio
 
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from langchain_community.utilities import SQLDatabase
 from langchain_chroma import Chroma
 from langchain_core.example_selectors import SemanticSimilarityExampleSelector
+
 # from langchain_core.messages import HumanMessage
 from langchain_core.prompts import FewShotPromptTemplate, PromptTemplate
 from langchain_experimental.sql import SQLDatabaseChain
@@ -23,7 +25,7 @@ app = FastAPI()
 
 # --- LLM ---
 model = ChatOpenAI(
-    model=os.environ.get("MODEL"),
+    model=os.environ.get("LLM"),
     openai_api_key=os.environ.get("OPENAI_API_KEY"),
     openai_api_base=os.environ.get("OPENAI_API_BASE"),
     # temperature=0.5
@@ -42,7 +44,7 @@ db = SQLDatabase.from_uri(db_uri)
 # ============================ VECTOR STORE & SQL CHAIN ======================
 
 # --- Embeddings & vector store ---
-EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
+EMBEDDING_MODEL = os.environ.get("EMBEDDING_MODEL")
 embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL)
 vectorize = [" ".join(vector.values()) for vector in few_shots]
 
@@ -93,7 +95,7 @@ class QueryRequest(BaseModel):
 @app.post(f"{BASE_URL}/query")
 async def get_result(payload: QueryRequest):
     try:
-        result = chain.invoke({"query": payload.query})
+        result = await asyncio.to_thread(chain.invoke, {"query": payload.query})
         return result
     except Exception as e:
         raise HTTPException(
