@@ -7,3 +7,21 @@ https://docs.langchain.com/oss/python/langchain/agents
 https://www.promptingguide.ai/techniques/fewshot
 
 https://www.promptingguide.ai/techniques/cot
+
+https://fastapi.tiangolo.com/
+
+https://www.uvicorn.org/
+
+https://fastapi.tiangolo.com/virtual-environments/
+
+https://youtu.be/d4yCWBGFCEs?si=y-t0Mjn15qlhqitU
+
+https://stackoverflow.com/questions/11202434/read-only-privilege-for-a-user-in-mysql-work-bench
+
+https://python.langchain.com/docs/integrations/toolkits/sql_database
+
+https://docs.trychroma.com/
+
+https://www.sbert.net/
+
+https://python.langchain.com/docs/integrations/tools/sql_database
