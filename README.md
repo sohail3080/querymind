@@ -15,11 +15,23 @@ You can test the API using the Postman collection below:
 
 ## Running the Backend Locally
 
-Start the FastAPI server with Uvicorn:
+1. **Create a virtual environment** (recommended):
 
-```bash
-uvicorn main:app --reload
-```
+   ```bash
+   python -m venv .venv
+   ```
+
+2. **Activate the virtual environment**:
+   - On Windows: `.venv\Scripts\activate`
+   - On Linux/macOS: `source .venv/bin/activate`
+
+3. **Install the required packages** — Install the packages listed in `requirements.txt` (ensure your venv is activated so they install into the virtual environment).
+
+4. **Start the FastAPI server** with Uvicorn:
+
+   ```bash
+   uvicorn main:app --reload
+   ```
 
 ---
 
@@ -130,7 +142,7 @@ CREATE TABLE product_inventory (
 
 ## Additional Note
 
-This is a learning project to combine **natural language Q&A**, **Text-to-SQL**, **FastAPI**, **LangChain**, **Chroma** (for few-shot retrieval), and **MySQL** in a retail context. It is intended for experimentation and understanding the stack, not as a production-ready service.
+This is a learning project to combine **natural language Q&A**, **Text-to-SQL**, **FastAPI**, **LangChain**, **Chroma** (for few-shot retrieval), and **MySQL** in a retail context. It is intended for experimentation and understanding.
 
 ---
 
@@ -138,4 +150,4 @@ This is a learning project to combine **natural language Q&A**, **Text-to-SQL**,
 
 If you find a bug, have a suggestion, or want to report an issue, please open an issue or reach out; feedback is welcome.
 
-**LinkedIn:** [My profile](www.linkedin.com/in/md-sohail-230141205) *(replace with your LinkedIn profile URL)*
+**LinkedIn:** [My profile](www.linkedin.com/in/md-sohail-230141205)
