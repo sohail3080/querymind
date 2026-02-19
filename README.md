@@ -54,7 +54,7 @@ The backend uses few-shot examples (selected by semantic similarity from a Chrom
 | `OPENAI_API_KEY`   | API key for the LLM (OpenAI or compatible endpoint). |
 | `OPENAI_API_BASE`  | Base URL for the API (e.g. `https://api.openai.com/v1` or your custom endpoint). |
 | `LLM`              | Model name/id (e.g. `gpt-4`, `gpt-3.5-turbo`). |
-| `EMBEDDING_MODEL`  | HuggingFace model for few-shot example embeddings (default used: `sentence-transformers/all-MiniLM-L6-v2`). |
+| `EMBEDDING_MODEL`  | HuggingFace model for few-shot example embeddings (no default in code; set in `.env`; example in `.env.example`: `sentence-transformers/all-MiniLM-L6-v2`). |
 | `db_user`          | MySQL user (readonly recommended). |
 | `db_password`      | MySQL password. |
 | `db_host`          | MySQL host. |
@@ -62,6 +62,26 @@ The backend uses few-shot examples (selected by semantic similarity from a Chrom
 | `db_port`          | MySQL port (e.g. `3306`). |
 
 Copy `.env.example` to `.env` and fill in your values.
+
+---
+
+## Sample Table for Experiment
+
+The following table was used by me. You can create it in your MySQL database to try the app as-is:
+
+```sql
+CREATE TABLE product_inventory (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    sku VARCHAR(64) NOT NULL UNIQUE,
+    product_name VARCHAR(255) NOT NULL,
+    category VARCHAR(255),
+    price DECIMAL(10,2) NOT NULL,
+    stock INT NOT NULL DEFAULT 0,
+    supplier VARCHAR(255)
+);
+```
+
+**Adapt to your needs:** Change the few-shot examples in `config/few_shots.py` and the system prompt in `config/prompts.py` to match your schema and use case. Queries and examples should reflect your own tables, columns, and business logic.
 
 ---
 
@@ -83,7 +103,7 @@ Copy `.env.example` to `.env` and fill in your values.
 
 ## Limitations & Considerations
 
-- **Database access** — Use a **readonly** MySQL user for safety; the app runs generated SELECT queries.
+- **Database access** — Use a **readonly** MySQL user for safety. A readonly user can only run SELECT (and similar read-only operations), which helps prevent SQL injection from turning into data changes, and avoids mistaken UPDATE/DELETE/INSERT or any processing other than viewing data. You can configure and verify user permissions in MySQL Workbench (see the sources below for details on managing user privileges).
 - **LLM dependency** — Requires an OpenAI-compatible API (OpenAI or custom base URL). No built-in API key auth in the app; secure the endpoint (e.g. reverse proxy or FastAPI middleware) if exposed.
 - **Few-shot scope** — Example set is fixed in code; best results when questions align with the retail schema and example types (prices, categories, stock, suppliers, etc.).
 - **No streaming** — Response is returned in one shot after SQL execution and LLM reply.
@@ -118,4 +138,4 @@ This is a learning project to combine **natural language Q&A**, **Text-to-SQL**,
 
 If you find a bug, have a suggestion, or want to report an issue, please open an issue or reach out; feedback is welcome.
 
-**LinkedIn:** [example.link](www.linkedin.com/in/md-sohail-230141205) *(replace with your LinkedIn profile URL)*
+**LinkedIn:** [My profile](www.linkedin.com/in/md-sohail-230141205) *(replace with your LinkedIn profile URL)*
