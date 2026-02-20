@@ -4,6 +4,13 @@ Backend that lets users ask questions in plain English; questions are converted 
 
 ---
 
+## Posted on LinkedIn
+
+I posted about this project on LinkedIn:  
+[https://www.linkedin.com/posts/md-sohail-230141205_github-sohail3080querymind-querymind-activity-7430337701012246528-9Slq?utm_source=share&utm_medium=member_desktop&rcm=ACoAADQq6AQBraEbiT14ztiatVqIq2dy3pG4Gus](https://www.linkedin.com/posts/md-sohail-230141205_github-sohail3080querymind-querymind-activity-7430337701012246528-9Slq?utm_source=share&utm_medium=member_desktop&rcm=ACoAADQq6AQBraEbiT14ztiatVqIq2dy3pG4Gus)
+
+---
+
 ## Postman Collection
 
 You can test the API using the Postman collection below:
